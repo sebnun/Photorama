@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9EC4DFD61C9242A2007954D7 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC4DFD51C9242A2007954D7 /* Photo.swift */; };
 		9ECA6A791C90D3CB00C87D9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA6A781C90D3CB00C87D9A /* AppDelegate.swift */; };
 		9ECA6A7E1C90D3CB00C87D9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ECA6A7C1C90D3CB00C87D9A /* Main.storyboard */; };
 		9ECA6A801C90D3CB00C87D9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ECA6A7F1C90D3CB00C87D9A /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9EC4DFD51C9242A2007954D7 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		9ECA6A751C90D3CB00C87D9A /* Photorama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photorama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ECA6A781C90D3CB00C87D9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ECA6A7D1C90D3CB00C87D9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				9EF6BA461C90D5E10023E5D8 /* PhotosViewController.swift */,
 				9ECA6A7C1C90D3CB00C87D9A /* Main.storyboard */,
 				9EF6BA481C90D8D20023E5D8 /* FlickrAPI.swift */,
+				9EC4DFD51C9242A2007954D7 /* Photo.swift */,
 				9EF6BA4A1C90DD7B0023E5D8 /* PhotoStore.swift */,
 				9ECA6A7F1C90D3CB00C87D9A /* Assets.xcassets */,
 				9ECA6A811C90D3CB00C87D9A /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				9EF6BA471C90D5E10023E5D8 /* PhotosViewController.swift in Sources */,
 				9EF6BA4B1C90DD7B0023E5D8 /* PhotoStore.swift in Sources */,
 				9ECA6A791C90D3CB00C87D9A /* AppDelegate.swift in Sources */,
+				9EC4DFD61C9242A2007954D7 /* Photo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

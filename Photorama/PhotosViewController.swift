@@ -16,6 +16,33 @@ class PhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        store.fetchRecentPhotos()
+        store.fetchRecentPhotos { (photoResult) -> Void in
+            
+            switch photoResult {
+                
+            case let .Success(photos):
+                print(photos.count)
+                
+                if let firstPhoto = photos.first {
+                    self.store.fetchImageForPhoto(firstPhoto, completion: { (imageResult) -> Void in
+                        
+                        switch imageResult {
+                        case let .Success(image):
+                            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                                self.imageView.image = image
+                            })
+                            
+                        case let .Failure(error):
+                            print("Error downloading image: \(error)")
+                        }
+                        
+                    })
+                }
+                
+            case let .Failure(error):
+                print(error)
+                
+            }
+        }
     }
 }
