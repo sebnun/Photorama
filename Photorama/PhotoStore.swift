@@ -65,9 +65,9 @@ class PhotoStore {
             
             if case let .Success(photos) = result {
                 
-                let mainQueueContext = self.coreDataStack.mainQueueContext
-                mainQueueContext.performBlockAndWait({ () -> Void in
-                    try! mainQueueContext.obtainPermanentIDsForObjects(photos)
+                let privateQueueContext = self.coreDataStack.privateQueueContext
+                privateQueueContext.performBlockAndWait({ () -> Void in
+                    try! privateQueueContext.obtainPermanentIDsForObjects(photos)
                 })
                 
                 let objectsIDs = photos.map{$0.objectID}
@@ -100,7 +100,7 @@ class PhotoStore {
             return .Failure(error!)
         }
         
-        return FlickrAPI.photosFromJSONData(jsonData, inContext: self.coreDataStack.mainQueueContext)
+        return FlickrAPI.photosFromJSONData(jsonData, inContext: self.coreDataStack.privateQueueContext)
     }
     
     func fetchImageForPhoto(photo: Photo, completion: (ImageResult) -> Void) {
@@ -144,5 +144,31 @@ class PhotoStore {
         }
         
         return .Success(image)
+    }
+    
+    func fetchMainQueueTags(predicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil) throws -> [NSManagedObject] {
+        
+        let fetchRequest = NSFetchRequest(entityName: "Tag")
+        fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = sortDescriptors
+        
+        let mainQueueContext = self.coreDataStack.mainQueueContext
+        var mainQueueTags: [NSManagedObject]?
+        var fetchRequestError: ErrorType?
+        
+        mainQueueContext.performBlockAndWait { () -> Void in
+            
+            do {
+                mainQueueTags = try mainQueueContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            } catch let error {
+                fetchRequestError = error
+            }
+        }
+        
+        guard let tags = mainQueueTags else {
+            throw fetchRequestError!
+        }
+        
+        return tags
     }
 }
