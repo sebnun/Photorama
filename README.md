@@ -1,3 +1,3 @@
 #Photorama
 
-App to view an tag recent photos uploaded to Flickr. Uses Core Data.
+App to view and tag recent photos uploaded to Flickr. Uses Core Data.
